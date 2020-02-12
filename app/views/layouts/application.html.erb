@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Boutique</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Chonburi&display=swap" rel="stylesheet">
+
+  </head>
+
+  <body class="bg-dark">
+  <% if user_signed_in? %>
+  <nav aria-label="breadcrumb ">
+    <ol class="breadcrumb bg-dark">
+      <li class="breadcrumb-item my-sm-2 font justify-content-end" aria-current="page">Logged in as <strong><%= current_user.username %></strong>.</li>
+      <li class="breadcrumb-item my-sm-2 link"><%= link_to 'Edit profile', edit_user_registration_path%></li>
+      <li class="breadcrumb-item my-sm-2 link"><%= link_to "Logout", destroy_user_session_path, method: :delete%></li>
+      <li class="breadcrumb-item my-sm-2 link"><%= link_to "Home", outfits_path %></li>
+      <i class="fas fa-shopping-cart"></i>
+    </ol>
+  </nav>
+  <% else %>
+    <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+    <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+  <% end %>
+
+ 
+
+  <% if notice %>
+    <p class="alert alert-success"><%= notice %></p>
+  <% end %>
+  <% if alert %>
+    <p class="alert alert-danger"><%= alert %></p>
+  <% end %>
+            
+</body>
+<%= yield %>
+</html>

@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col-4"></div>
+    <div class="col-4">
+      <%= form_with model: @outfit do |f| %>
+          <div><%=image_tag(@outfit.picture, class: "my-pic")%></div>
+          <div class="form-group">
+              <label for="exampleFormControlSelect1">Size:</label>
+              <select class="form-control" name="outfit[size]" id="exampleFormControlSelect1">
+                <option>XS</option>
+                <option>S</option>
+                <option>M</option>
+                <option>L</option>
+                <option>XL</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">Color:</label>
+              <textarea class="form-control" name="outfit[color]" id="exampleFormControlTextarea1" rows="1"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">Price:</label>
+              <textarea class="form-control" name="outfit[price]" id="exampleFormControlTextarea1" rows="1"></textarea>
+            </div>
+            <%= f.submit %>    
+      <% end %>
+    </div>
+  </div>
+</div>

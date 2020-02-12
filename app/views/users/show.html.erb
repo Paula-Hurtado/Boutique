@@ -1,0 +1,17 @@
+<div class="container">
+    <h1 class="font text-center">Perfil del usuario</h1>
+        <div class="row">
+            <% @user.outfits.each do |outfit| %>
+                <div class="col-4">
+                    <%= link_to(image_tag(outfit.picture, class: "my-pic"), "/outfit/#{outfit.id}") %>
+                    <p class="font">Size: <%= outfit.size %><p>
+                    <p class="font">Color: <%= outfit.color %><p>
+                    <p class="font">Price: <%= outfit.price %><p>
+                    <p class="font">Brand: <%= outfit.brand %><p>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>
+    
+    

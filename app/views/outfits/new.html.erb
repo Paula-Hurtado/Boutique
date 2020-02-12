@@ -1,0 +1,46 @@
+
+<div class="jumbotron jumbotron-fluid bg-dark">
+<div class="container">
+  <h1 class="display-4 title">ADD A NEW ITEM!</h1>
+</div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-4"></div>
+    <div class="col-4">
+   
+    <%= form_with model: @outfit do |f| %>
+
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1" class="font">picture: <%= f.file_field :picture, required: true %></label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="1" placeholder="Optional description"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlSelect1" class="font">Size:</label>
+        <select name="outfit[size]" class="form-control" id="exampleFormControlSelect1">
+          <option>XS</option>
+          <option>S</option>
+          <option>M</option>
+          <option>L</option>
+          <option>XL</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1" class="font">Brand:</label>
+        <textarea name="outfit[brand]" class="form-control" id="exampleFormControlTextarea1" rows="1"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1" class="font">Color:</label>
+        <textarea name="outfit[color]" class="form-control" id="exampleFormControlTextarea1" rows="1"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1" class="font">Price:</label>
+        <textarea name="outfit[price]" class="form-control" id="exampleFormControlTextarea1" rows="1"></textarea>
+      </div>
+      <%= f.submit %>    
+      <% end %>
+    </div>
+  </div>
+</div>
+
