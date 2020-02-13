@@ -5,5 +5,15 @@ class User < ApplicationRecord
   :recoverable, :rememberable, :validatable
 
   validates :username, presence: true
-has_many :outfits
+  has_many :outfits
+  has_many :wish_list_items
+  
+  
+  def wish_list_outfits
+    wish_list_items.map do |wl|
+      wl.outfit
+    end
+  end
+
+  
 end

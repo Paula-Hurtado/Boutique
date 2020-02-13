@@ -7,6 +7,10 @@ class OutfitsController < ApplicationController
         @outfit = Outfit.new
     end 
 
+    def show 
+        @outfit = Outfit.find(params[:id])
+    end 
+
     def create
         @outfit = Outfit.new(outfit_params)
         @outfit.user_id = current_user.id
@@ -17,10 +21,6 @@ class OutfitsController < ApplicationController
             redirect_back(fallback_location: root_path)
             flash[:alert] = "Item creation failed"
          end
-    end 
-
-    def show 
-        @outfit = Outfit.find(params[:id])
     end 
 
     def destroy
@@ -56,9 +56,13 @@ class OutfitsController < ApplicationController
         end 
     end 
 
+    def wishlist
+        @outfits = Outfit.where("wishlist = ?", true)
+    end
+
     private 
     def outfit_params
-        params.require(:outfit).permit(:size, :brand, :picture, :color, :price)
+        params.require(:outfit).permit(:size, :brand, :picture, :color, :price, :wishlist)
     end
     def edit_params
         params.require(:outfit).permit(:size, :price, :color)

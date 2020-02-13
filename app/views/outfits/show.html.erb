@@ -5,17 +5,25 @@
 <div class="container">
   <div class="row">
     <div class="col-4">
-      <%= image_tag @outfit.picture, class:"my-pic"%>
+      
+    
       <% if current_user == @outfit.user %>
-    <p class = "margen"><%= button_to "Delete", @outfit, method: :delete, class: "btn btn-danger"%></p>
-    <p class = "margen"><%= button_to "Edit", "/outfits/#{@outfit.id}/edit", method: :get, class: "btn btn-info"%></p> 
-<% end %>
-    </div>
+        <p class = "margen"><%= button_to "Delete", @outfit, method: :delete, class: "btn btn-danger"%></p>
+        <p class = "margen"><%= button_to "Edit", "/outfits/#{@outfit.id}/edit", method: :get, class: "btn btn-info"%></p>
+    
+      <% end %>
+    <% if current_user.wish_list_outfits.include? @outfit %>
+    <p class = "margen">Added to wish list</p>
+    <% else %>
+      <p class = "margen"><%= button_to "Wish list", "/outfits/#{@outfit.id}/wish_list_items", method: :post, class: "btn btn-info"%></p>
+    <% end %>
+        </div>
     <div class="col-4">
       <p class="font">Size: <%= @outfit.size %></p>
       <p class="font">Brand: <%= @outfit.brand %></p>
       <p class="font">Color: <%= @outfit.color %></p>
       <p class="font">Price: <%= @outfit.price %></p>
+      
     </div>
   </div>
 </div>

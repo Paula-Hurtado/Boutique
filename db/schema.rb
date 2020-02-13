@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_12_155646) do
+ActiveRecord::Schema.define(version: 2020_02_13_191735) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -33,6 +33,14 @@ ActiveRecord::Schema.define(version: 2020_02_12_155646) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "line_items", force: :cascade do |t|
+    t.integer "outfit_id", null: false
+    t.integer "quantity", default: 0, null: false
+    t.decimal "unit_price", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "outfits", force: :cascade do |t|
     t.string "size"
     t.decimal "price"
@@ -40,6 +48,7 @@ ActiveRecord::Schema.define(version: 2020_02_12_155646) do
     t.string "category"
     t.string "brand"
     t.integer "user_id"
+    t.boolean "wishlist"
   end
 
   create_table "users", force: :cascade do |t|
@@ -53,6 +62,13 @@ ActiveRecord::Schema.define(version: 2020_02_12_155646) do
     t.string "username"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "wish_list_items", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "outfit_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
