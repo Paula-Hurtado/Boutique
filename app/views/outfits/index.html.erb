@@ -2,6 +2,8 @@
 <h1 class="title text-center">HAPPY SHOPPING!</h1>
 </div>
 
+<button type="button" class="btn btn-outline-success button link_2"><%= link_to "Add", new_outfit_path %> </button>
+
 <div class = "container">
     <div class = "row">
           <% @outfits.each do |outfit| %>
@@ -16,7 +18,4 @@
               </div>
           <% end %>
     </div>
-
-    <button type="button" class="btn btn-outline-light"><%= link_to "Add", new_outfit_path %> </button>
-
 </div>

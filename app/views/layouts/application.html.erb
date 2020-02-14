@@ -24,7 +24,8 @@
       <li class="breadcrumb-item my-sm-2 link"><%= link_to 'Edit profile', edit_user_registration_path%></li>
       <li class="breadcrumb-item my-sm-2 link"><%= link_to "Logout", destroy_user_session_path, method: :delete%></li>
       <li class="breadcrumb-item my-sm-2 link"><%= link_to "Home", outfits_path %></li>
-      <a class="nav-link" href="/outfits/wishlist">Wish list</a>
+      <li class="breadcrumb-item my-sm-2 link"><%= link_to "Wish List", wishlist_outfits_path %></li>
+   
     </ol>
   </nav>
   <% else %>
